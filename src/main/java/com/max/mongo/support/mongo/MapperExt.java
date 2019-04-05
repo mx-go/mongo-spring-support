@@ -3,7 +3,7 @@ package com.max.mongo.support.mongo;
 import org.mongodb.morphia.mapping.Mapper;
 
 /**
- * 支持设定collection的前后缀，比如 2017_%s, %s_2017
+ * 支持设定collection的前后缀，比如 2019_%s, %s_2019
  *
  * @author max
  */

@@ -20,7 +20,6 @@ public class MongoConfiguration {
     public String dbName;
     /**
      * Entity包路径。
-     * <p>多个用逗号分隔。
      */
     public String mapPackage;
     /**
@@ -40,7 +39,7 @@ public class MongoConfiguration {
      */
     public int socketTimeout = 60000;
     /**
-     * 不到合适服务器时候就决定放弃的时间间隔
+     * 找不到合适服务器时候就决定放弃的时间间隔
      */
     public int serverSelectionTimeout = 10000;
     /**
