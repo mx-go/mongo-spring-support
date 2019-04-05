@@ -58,7 +58,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
         FindOptions findOptions = new FindOptions();
         findOptions.skip(offset);
         findOptions.limit(limit);
-        return query.asList();
+        return query.asList(findOptions);
     }
 
     @Override

@@ -80,7 +80,6 @@ public class Pager<T> implements Serializable {
         if (currentPage < 1) {
             currentPage = 1;
         }
-
         this.currentPage = currentPage;
     }
 
