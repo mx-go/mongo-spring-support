@@ -19,11 +19,12 @@ public class MongoConfiguration {
      */
     public String dbName;
     /**
-     * Entity包路径。
+     * 扫描包路径做orm映射
      */
     public String mapPackage;
     /**
-     * 查询模式。用于查询、Map-Reduce、聚合、计数的读取首选项。
+     * 读优先配置。用于查询、Map-Reduce、聚合、计数的读取首选项。
+     * 设置为secondary则优先读从库
      */
     public String readPreference = "primary";
     /**
@@ -33,7 +34,7 @@ public class MongoConfiguration {
      */
     public int connectTimeout = 5000;
     /**
-     * socket 超时时间（毫秒），用于 I/O 读写操作。
+     * 读取mongo响应超时设置
      * <p>
      * 默认为 0，表示无限制。
      */
@@ -67,16 +68,20 @@ public class MongoConfiguration {
      */
     public int maxConnectionsPerHost = 100;
     /**
-     * 不向MongoDB中存储空的表或者映射值
+     * 是否保存空集合
      */
     public boolean storeEmpties = false;
     /**
-     * 不向MongoDB中存储空的表或者映射值
+     * 是否保存null对象
      */
     public boolean storeNulls = false;
     /**
-     * 忽略不能映射的class
+     * orm映射是否忽略class映射不对
      */
     public boolean ignoreInvalidClasses = false;
+    /**
+     * 默认鉴权库名
+     * 鉴权信息保存在一个独立库中，登录后再切换操作其他数据库
+     */
     public String trustDbName;
 }
