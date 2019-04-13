@@ -40,7 +40,7 @@ public class MongoDataStoreFactoryBean implements InitializingBean, DisposableBe
      * 配置bean
      */
     @Setter
-    private MongoConfiguration configuration;
+    private MongoConfiguration mongoConfiguration;
     private Map<String, DatastoreExt> stores = Maps.newConcurrentMap();
     /**
      * 代理对象
@@ -115,8 +115,8 @@ public class MongoDataStoreFactoryBean implements InitializingBean, DisposableBe
     }
 
     private void initFirst() {
-        String dbName = configuration.getDbName();
-        String uriDbName = new ConnectionString(configuration.getServers()).getDatabase();
+        String dbName = mongoConfiguration.getDbName();
+        String uriDbName = new ConnectionString(mongoConfiguration.getServers()).getDatabase();
         String name = firstNotEmpty(dbName, uriDbName, "admin");
         datastoreExt = getOrCreate(name, null);
     }
@@ -131,7 +131,7 @@ public class MongoDataStoreFactoryBean implements InitializingBean, DisposableBe
     }
 
     private String getUri(String dbName) {
-        String servers = configuration.getServers();
+        String servers = mongoConfiguration.getServers();
         // 如果配置的dbName和要使用的不一致,这里要做切换
         if (!servers.endsWith('/' + dbName)) {
             int pos = servers.lastIndexOf('/');
@@ -153,32 +153,32 @@ public class MongoDataStoreFactoryBean implements InitializingBean, DisposableBe
      */
     private Datastore doCreate(ConnectionString connection, String format) {
         MongoClientOptions.Builder builder = new MongoClientOptions.Builder();
-        builder.readPreference(ReadPreference.valueOf(configuration.getReadPreference()))
-                .serverSelectionTimeout(configuration.getServerSelectionTimeout())
-                .maxWaitTime(configuration.getMaxWaitTime())
-                .maxConnectionLifeTime(configuration.getMaxConnectionLifeTime())
-                .maxConnectionIdleTime(configuration.getMaxConnectionIdleTime())
-                .connectionsPerHost(configuration.getMaxConnectionsPerHost())
-                .connectTimeout(configuration.getConnectTimeout())
-                .socketTimeout(configuration.getSocketTimeout());
+        builder.readPreference(ReadPreference.valueOf(mongoConfiguration.getReadPreference()))
+                .serverSelectionTimeout(mongoConfiguration.getServerSelectionTimeout())
+                .maxWaitTime(mongoConfiguration.getMaxWaitTime())
+                .maxConnectionLifeTime(mongoConfiguration.getMaxConnectionLifeTime())
+                .maxConnectionIdleTime(mongoConfiguration.getMaxConnectionIdleTime())
+                .connectionsPerHost(mongoConfiguration.getMaxConnectionsPerHost())
+                .connectTimeout(mongoConfiguration.getConnectTimeout())
+                .socketTimeout(mongoConfiguration.getSocketTimeout());
 
         Mapper mapper = new Mapper();
         if (!Strings.isNullOrEmpty(format)) {
             mapper = new MapperExt(format);
         }
         MapperOptions options = new MapperOptions();
-        options.setStoreEmpties(configuration.storeEmpties);
-        options.setStoreNulls(configuration.storeNulls);
+        options.setStoreEmpties(mongoConfiguration.storeEmpties);
+        options.setStoreNulls(mongoConfiguration.storeNulls);
         mapper.setOptions(options);
         Morphia morphia = new Morphia(mapper);
-        morphia.mapPackage(configuration.getMapPackage(), configuration.ignoreInvalidClasses);
+        morphia.mapPackage(mongoConfiguration.getMapPackage(), mongoConfiguration.ignoreInvalidClasses);
         MongoClient mongo = new MongoClient(new MongoClientURI(getAuthorizedURI(connection), builder));
         return morphia.createDatastore(mongo, connection.getDatabase());
     }
 
     private String getAuthorizedURI(ConnectionString connection) {
         String uri = connection.getConnectionString();
-        String trustDb = configuration.getTrustDbName();
+        String trustDb = mongoConfiguration.getTrustDbName();
         if ("admin".equals(trustDb)) {
             int pos = uri.indexOf('?');
             // mongo底层authSource参数只支持admin
@@ -187,7 +187,7 @@ public class MongoDataStoreFactoryBean implements InitializingBean, DisposableBe
         if (connection.getDatabase() != null) {
             return uri;
         }
-        String dbName = configuration.getDbName();
+        String dbName = mongoConfiguration.getDbName();
         if (dbName != null) {
             return uri + '/' + dbName;
         }
