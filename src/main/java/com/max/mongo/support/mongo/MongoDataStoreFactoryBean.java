@@ -95,7 +95,7 @@ public class MongoDataStoreFactoryBean implements InitializingBean, DisposableBe
                 String key = it.next();
                 DatastoreHandler handler = (DatastoreHandler) Proxy.getInvocationHandler(stores.get(key));
                 oldClients.add(handler.getDelegate().getMongo());
-                //shard模式下，直接删除会在下次setTenantId的时候自动创建，但是其他模式可能会被别的地方引用，必须原位替换delegate对象
+                // 可能会被别的地方引用，必须原位替换delegate对象
                 if (key.startsWith("mongodb://")) {
                     it.remove();
                 } else {

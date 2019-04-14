@@ -28,12 +28,10 @@ public final class NameUtil {
         return capital + word.substring(1);
     }
 
-    public static String lowerCap(final String word) {
+    private static String lowerCap(final String word) {
         final char firstChar = word.charAt(0);
         final char lowerCap = Character.toLowerCase(firstChar);
 
         return lowerCap + word.substring(1);
     }
-
-
 }
