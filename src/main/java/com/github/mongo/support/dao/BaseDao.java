@@ -1,4 +1,4 @@
-package com.max.mongo.support.dao;
+package com.github.mongo.support.dao;
 
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.Query;

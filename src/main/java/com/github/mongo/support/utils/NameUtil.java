@@ -1,4 +1,4 @@
-package com.max.mongo.support.utils;
+package com.github.mongo.support.utils;
 
 import java.util.List;
 

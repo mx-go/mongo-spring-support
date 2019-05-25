@@ -1,9 +1,9 @@
-package com.max.mongo.support.dao;
+package com.github.mongo.support.dao;
 
 import com.google.common.base.Strings;
-import com.max.mongo.support.mapper.EntityMapper;
-import com.max.mongo.support.mapper.EntityMapperManager;
-import com.max.mongo.support.mapper.FieldInfo;
+import com.github.mongo.support.mapper.EntityMapper;
+import com.github.mongo.support.mapper.EntityMapperManager;
+import com.github.mongo.support.mapper.FieldInfo;
 import com.mongodb.AggregationOptions;
 import com.mongodb.Cursor;
 import com.mongodb.DBObject;

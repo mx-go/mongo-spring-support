@@ -1,6 +1,6 @@
-package com.max.mongo.support.mapper;
+package com.github.mongo.support.mapper;
 
-import com.max.mongo.support.utils.NameUtil;
+import com.github.mongo.support.utils.NameUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.max.mongo.support.mapper;
+package com.github.mongo.support.mapper;
 
 
 import org.mongodb.morphia.annotations.Id;

@@ -1,4 +1,4 @@
-package com.max.mongo.support.mongo;
+package com.github.mongo.support.mongo;
 
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
