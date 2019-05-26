@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
  * 基础方法实现类
  *
  * @param <T>
- * @author max
  */
 @Getter
 @Setter

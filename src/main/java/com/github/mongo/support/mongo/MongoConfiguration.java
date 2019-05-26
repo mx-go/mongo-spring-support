@@ -4,8 +4,6 @@ import lombok.Data;
 
 /**
  * mongodb参数配置类
- *
- * @author max
  */
 @Data
 public class MongoConfiguration {

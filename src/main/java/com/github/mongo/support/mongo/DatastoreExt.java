@@ -4,8 +4,6 @@ import org.mongodb.morphia.AdvancedDatastore;
 
 /**
  * 扩展datastore功能
- *
- * @author max
  */
 public interface DatastoreExt extends AdvancedDatastore {
 

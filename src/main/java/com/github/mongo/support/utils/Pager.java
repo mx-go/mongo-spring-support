@@ -8,8 +8,6 @@ import java.util.List;
 
 /**
  * 分页
- *
- * @author max
  */
 @ToString
 public class Pager<T> implements Serializable {

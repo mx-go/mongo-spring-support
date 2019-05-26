@@ -4,8 +4,6 @@ import java.util.List;
 
 /**
  * 将一堆数字按照驼峰规则输出成字符串。但是传入的数据必须要规范
- *
- * @author max
  */
 public final class NameUtil {
     public static String camelCase(List<String> words) {

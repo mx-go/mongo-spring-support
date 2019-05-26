@@ -4,8 +4,6 @@ import org.mongodb.morphia.mapping.Mapper;
 
 /**
  * 支持设定collection的前后缀，比如 2019_%s, %s_2019
- *
- * @author max
  */
 public class MapperExt extends Mapper {
     private final String format;

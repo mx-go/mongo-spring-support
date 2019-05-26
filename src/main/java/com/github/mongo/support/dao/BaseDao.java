@@ -10,7 +10,6 @@ import java.util.List;
  * 基础方法
  *
  * @param <T>
- * @author max
  */
 public interface BaseDao<T> {
     /**

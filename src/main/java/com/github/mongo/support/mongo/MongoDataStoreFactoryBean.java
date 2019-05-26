@@ -30,8 +30,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * FactoryBean生成代理对象
- *
- * @author max
  */
 @Slf4j
 public class MongoDataStoreFactoryBean implements InitializingBean, DisposableBean, FactoryBean<DatastoreExt> {
