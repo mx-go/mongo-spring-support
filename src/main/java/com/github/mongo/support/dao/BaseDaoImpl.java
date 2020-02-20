@@ -1,16 +1,16 @@
 package com.github.mongo.support.dao;
 
-import com.google.common.base.Strings;
 import com.github.mongo.support.mapper.EntityMapper;
 import com.github.mongo.support.mapper.EntityMapperManager;
 import com.github.mongo.support.mapper.FieldInfo;
+import com.github.mongo.support.mongo.DatastoreExt;
+import com.google.common.base.Strings;
 import com.mongodb.AggregationOptions;
 import com.mongodb.Cursor;
 import com.mongodb.DBObject;
 import lombok.Getter;
 import lombok.Setter;
 import org.bson.types.ObjectId;
-import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.FindOptions;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
@@ -27,16 +27,16 @@ import java.util.stream.Collectors;
 @Setter
 public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 
-    private Datastore datastore;
+    private DatastoreExt datastore;
     private Class<T> clazz;
 
-    public BaseDaoImpl(Datastore datastore, Class<T> clazz) {
-        this.datastore = datastore;
+    public BaseDaoImpl(DatastoreExt datastoreExt, Class<T> clazz) {
+        this.datastore = datastoreExt;
         this.clazz = clazz;
     }
 
     @Override
-    public Datastore getDatastore() {
+    public DatastoreExt getDatastore() {
         return this.datastore;
     }
 

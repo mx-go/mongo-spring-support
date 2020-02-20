@@ -19,7 +19,7 @@ public interface DatastoreExt extends AdvancedDatastore {
      * 同一个库，支持带前缀的CollectionName，例如 2017_user
      *
      * @param dbName db名字
-     * @param prefix collection的前缀名
+     * @param prefix collection的前缀名(默认_分割)
      * @return datastore对象
      */
     DatastoreExt getDatastoreByPrefix(String dbName, String prefix);
@@ -28,7 +28,7 @@ public interface DatastoreExt extends AdvancedDatastore {
      * 同一个库，支持带后缀的CollectionName，例如 user_2017
      *
      * @param dbName db名字
-     * @param suffix collection的后缀名
+     * @param suffix collection的后缀名(默认_分割)
      * @return datastore对象
      */
     DatastoreExt getDatastoreBySuffix(String dbName, String suffix);
